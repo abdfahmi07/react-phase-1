@@ -1,15 +1,23 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const fruits = ["Apple", "Orange", "Grape", "Watermelon"];
+  const namaRef = React.useRef(null);
 
-  //   return array and append to parent element
+  function isSubmit(event) {
+    event.preventDefault();
+    const nama = namaRef.current.value;
+
+    console.log("Name is: " + nama);
+  }
+
   return (
-    <ul>
-      {fruits.map(function (fruit, idx) {
-        return <li key={idx}>{fruit}</li>;
-      })}
-    </ul>
+    <form onSubmit={isSubmit}>
+      <div>
+        <label>Name: </label>
+        <input type="text" name="name" ref={namaRef} />
+      </div>
+      <button type="submit">Kirim</button>
+    </form>
   );
 }
 
