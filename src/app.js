@@ -1,20 +1,15 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [isLogin, setLogin] = React.useState(false);
-  const judulRef = React.useRef(null);
-  console.log("before", judulRef);
+  const fruits = ["Apple", "Orange", "Grape", "Watermelon"];
 
-  React.useEffect(function () {
-    setTimeout(function () {
-      judulRef.current.textContent = "Aplikasi";
-    }, 1000);
-  }, []);
-
+  //   return array and append to parent element
   return (
-    <>
-      <h1 ref={judulRef}>Application</h1>
-    </>
+    <ul>
+      {fruits.map(function (fruit, idx) {
+        return <li key={idx}>{fruit}</li>;
+      })}
+    </ul>
   );
 }
 

@@ -1,17 +1,13 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [isLogin, setLogin] = React.useState(false);
-  const judulRef = React.useRef(null);
-  console.log("before", judulRef);
-  React.useEffect(function () {
-    setTimeout(function () {
-      judulRef.current.textContent = "Aplikasi";
-    }, 1000);
-  }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
-    ref: judulRef
-  }, "Application"));
+  const fruits = ["Apple", "Orange", "Grape", "Watermelon"]; //   return array and append to parent element
+
+  return /*#__PURE__*/React.createElement("ul", null, fruits.map(function (fruit, idx) {
+    return /*#__PURE__*/React.createElement("li", {
+      key: idx
+    }, fruit);
+  }));
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
