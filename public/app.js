@@ -1,9 +1,10 @@
 const root = document.querySelector("#root");
-const element = /*#__PURE__*/React.createElement("div", {
-  style: {
-    width: "200px",
-    height: "200px",
-    backgroundColor: "orange"
-  }
+
+function sayHello(name) {
+  alert(name);
+}
+
+const element = /*#__PURE__*/React.createElement("button", {
+  onClick: sayHello.bind(this, "Abdulloh Fahmi")
 }, "Click me");
 ReactDOM.render(element, root);
