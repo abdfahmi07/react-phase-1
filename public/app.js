@@ -1,10 +1,17 @@
 const root = document.querySelector("#root");
 
-function sayHello(name) {
-  alert(name);
+function App() {
+  const [count, updateCount] = React.useState(0);
+  console.log(count);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    onClick: function () {
+      updateCount(count - 1);
+    }
+  }, "-"), /*#__PURE__*/React.createElement("span", null, count), /*#__PURE__*/React.createElement("button", {
+    onClick: function () {
+      updateCount(count + 1);
+    }
+  }, "+"));
 }
 
-const element = /*#__PURE__*/React.createElement("button", {
-  onClick: sayHello.bind(this, "Abdulloh Fahmi")
-}, "Click me");
-ReactDOM.render(element, root);
+ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);

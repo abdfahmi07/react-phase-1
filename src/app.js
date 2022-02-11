@@ -1,11 +1,28 @@
 const root = document.querySelector("#root");
 
-function sayHello(name) {
-  alert(name);
+function App() {
+  const [count, updateCount] = React.useState(0);
+
+  console.log(count);
+  return (
+    <>
+      <button
+        onClick={function () {
+          updateCount(count - 1);
+        }}
+      >
+        -
+      </button>
+      <span>{count}</span>
+      <button
+        onClick={function () {
+          updateCount(count + 1);
+        }}
+      >
+        +
+      </button>
+    </>
+  );
 }
 
-const element = (
-  <button onClick={sayHello.bind(this, "Abdulloh Fahmi")}>Click me</button>
-);
-
-ReactDOM.render(element, root);
+ReactDOM.render(<App />, root);
