@@ -4,9 +4,20 @@ function App() {
   const [diklik, setDiklik] = React.useState(false);
   const [count, setCount] = React.useState(0);
 
-  React.useEffect(function () {
-    console.log(document.querySelector("#judul"));
-  });
+  React.useEffect(
+    function () {
+      console.log(document.querySelector("#judul"));
+    },
+    [diklik] //watch state
+  );
+
+  //   If want to render once
+  //   React.useEffect(
+  //     function () {
+  //       console.log(document.querySelector("#judul"));
+  //     },
+  //     [diklik] //watch state
+  //   );
 
   return (
     <>
@@ -18,6 +29,14 @@ function App() {
       >
         Click me
       </button>
+      <button
+        onClick={function () {
+          setCount(count + 1);
+        }}
+      >
+        Add me
+      </button>
+      <span>Nilai saat ini: {count}</span>
     </>
   );
 }
