@@ -1,42 +1,33 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [diklik, setDiklik] = React.useState(false);
-  const [count, setCount] = React.useState(0);
+  const [isLogin, setLogin] = React.useState(false);
 
-  React.useEffect(
-    function () {
-      console.log(document.querySelector("#judul"));
-    },
-    [diklik] //watch state
-  );
-
-  //   If want to render once
-  //   React.useEffect(
-  //     function () {
-  //       console.log(document.querySelector("#judul"));
-  //     },
-  //     [diklik] //watch state
-  //   );
+  if (isLogin) {
+    return (
+      <>
+        <h1>Sudah login, Bro!</h1>
+        <button
+          onClick={function () {
+            setLogin(false);
+          }}
+        >
+          Logout
+        </button>
+      </>
+    );
+  }
 
   return (
     <>
-      <h1 id="judul">Hello, ini judul</h1>
+      <h1>Login dulu, Bro!</h1>
       <button
         onClick={function () {
-          setDiklik(true);
+          setLogin(true);
         }}
       >
-        Click me
+        Login
       </button>
-      <button
-        onClick={function () {
-          setCount(count + 1);
-        }}
-      >
-        Add me
-      </button>
-      <span>Nilai saat ini: {count}</span>
     </>
   );
 }

@@ -1,30 +1,21 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [diklik, setDiklik] = React.useState(false);
-  const [count, setCount] = React.useState(0);
-  React.useEffect(function () {
-    console.log(document.querySelector("#judul"));
-  }, [diklik] //watch state
-  ); //   If want to render once
-  //   React.useEffect(
-  //     function () {
-  //       console.log(document.querySelector("#judul"));
-  //     },
-  //     [diklik] //watch state
-  //   );
+  const [isLogin, setLogin] = React.useState(false);
 
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
-    id: "judul"
-  }, "Hello, ini judul"), /*#__PURE__*/React.createElement("button", {
+  if (isLogin) {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Sudah login, Bro!"), /*#__PURE__*/React.createElement("button", {
+      onClick: function () {
+        setLogin(false);
+      }
+    }, "Logout"));
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Login dulu, Bro!"), /*#__PURE__*/React.createElement("button", {
     onClick: function () {
-      setDiklik(true);
+      setLogin(true);
     }
-  }, "Click me"), /*#__PURE__*/React.createElement("button", {
-    onClick: function () {
-      setCount(count + 1);
-    }
-  }, "Add me"), /*#__PURE__*/React.createElement("span", null, "Nilai saat ini: ", count));
+  }, "Login"));
 }
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), root);
