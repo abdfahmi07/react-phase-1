@@ -1,25 +1,22 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [count, updateCount] = React.useState(0);
+  const [diklik, setDiklik] = React.useState(false);
+  const [count, setCount] = React.useState(0);
 
-  console.log(count);
+  React.useEffect(function () {
+    console.log(document.querySelector("#judul"));
+  });
+
   return (
     <>
+      <h1 id="judul">Hello, ini judul</h1>
       <button
         onClick={function () {
-          updateCount(count - 1);
+          setDiklik(true);
         }}
       >
-        -
-      </button>
-      <span>{count}</span>
-      <button
-        onClick={function () {
-          updateCount(count + 1);
-        }}
-      >
-        +
+        Click me
       </button>
     </>
   );
