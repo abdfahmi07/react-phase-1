@@ -1,29 +1,31 @@
 const root = document.querySelector("#root");
 
 function App() {
-  const [name, setName] = React.useState("");
+  const [news, setNews] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
-  function isSubmit(event) {
-    event.preventDefault();
+  React.useEffect(async function () {
+    const response = await fetch("https://api.spaceflightnewsapi.net/v3/blogs");
+    const results = await response.json();
 
-    console.log("Name is: " + name);
-  }
+    setNews(results);
+    setLoading(false);
+  }, []);
 
   return (
-    <form onSubmit={isSubmit}>
-      <div>
-        <label>Name: </label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={function (event) {
-            setName(event.target.value);
-          }}
-        />
-      </div>
-      <button type="submit">Kirim</button>
-    </form>
+    <>
+      <h1>Hello World</h1>
+      {loading ? (
+        <i>Loading data....</i>
+      ) : (
+        <ul>
+          {news.map((item) => {
+            console.log(item);
+            return <li key={item.id}>{item.title}</li>;
+          })}
+        </ul>
+      )}
+    </>
   );
 }
 
